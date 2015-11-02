@@ -19,6 +19,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //data
     private let dwarves = ["sleepy", "sneezy", "Bashful", "Happy", "Doc", "Grumpy", "Dopey", "Thorin", "Dorin", "Nori", "Ori", "Barlin", "Dwalin", "Fili", "Kili", "Oin", "Gloin", "Bifur", "Bofur", "Bombur"]
     
+    var categorizedDwarves: [String] = []
+    
     //filtered data array
     var filteredDwarves: [String] = []
     
@@ -32,7 +34,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (searchActive) {
             return filteredDwarves.count
         } else {
-            return dwarves.count
+            return categorizedDwarves.count
         }
     }
     
@@ -46,7 +48,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (searchActive) {
             cell?.textLabel!.text = filteredDwarves[indexPath.row]
         } else {
-            cell?.textLabel!.text = dwarves[indexPath.row]
+            cell?.textLabel!.text = categorizedDwarves[indexPath.row]
         }
         return cell!
     }
@@ -70,9 +72,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         searchActive = false
     }
     
+    /*Implement this function for entering search text in the search bar
+      This search is not based on the full name list, as we have added scope
+      bar. Each text search is based on dwarves' name categories which are
+      full name list, long name list and short name list.
+    */
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filteredDwarves = dwarves.filter({ (text) -> Bool in
+        filteredDwarves = categorizedDwarves.filter({ (text) -> Bool in
             let tmp: NSString = text
             let range = tmp.rangeOfString(searchText, options: .CaseInsensitiveSearch)
             return range.location != NSNotFound
@@ -95,17 +102,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         //if name length is more then 4 characters, it is a long name, otherwise, it is a short name
         switch selectedScope {
-        case 0:
-            filteredDwarves = dwarves.filter({ (text) -> Bool in
+        case 1:  //long names
+            categorizedDwarves = dwarves.filter({ (text) -> Bool in
                 return text.characters.count > 4
             })
-        case 1:
-            filteredDwarves = dwarves.filter({ (text) -> Bool in
+        case 2:  //short names
+            categorizedDwarves = dwarves.filter({ (text) -> Bool in
                 return text.characters.count <= 4
             })
-        default:
-            filteredDwarves = dwarves
+        default:  //all names
+            categorizedDwarves = dwarves
         }
+        
+        filteredDwarves = categorizedDwarves
         searchActive = true
         self.tableView.reloadData()
     }
@@ -117,6 +126,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        categorizedDwarves = dwarves
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self

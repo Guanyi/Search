@@ -26,9 +26,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <scopeButtonTitles>
+                                        <string>All</string>
                                         <string>Long Name</string>
                                         <string>Short Name</string>
-                                        <string>All</string>
                                     </scopeButtonTitles>
                                 </searchBar>
                                 <prototypes>

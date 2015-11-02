@@ -21,10 +21,15 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mp4-iU-8fE">
                                 <rect key="frame" x="20" y="20" width="560" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter Search Text" id="7tF-D6-JvX">
-                                    <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter Search Text" showsScopeBar="YES" id="7tF-D6-JvX">
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="88"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <scopeButtonTitles>
+                                        <string>Long Name</string>
+                                        <string>Short Name</string>
+                                        <string>All</string>
+                                    </scopeButtonTitles>
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="pIM-ez-tq6">

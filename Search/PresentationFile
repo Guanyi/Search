@@ -1,0 +1,47 @@
+public protocol UISearchBarDelegate : UIBarPositioningDelegate {
+
+@available(iOS 2.0, *)
+optional public func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool // return NO to not become first responder
+
+
+@available(iOS 2.0, *)
+optional public func searchBarTextDidBeginEditing(searchBar: UISearchBar) // called when text starts editing
+
+
+@available(iOS 2.0, *)
+optional public func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool // return NO to not resign first responder
+
+
+@available(iOS 2.0, *)
+optional public func searchBarTextDidEndEditing(searchBar: UISearchBar) // called when text ends editing
+
+
+@available(iOS 2.0, *)
+optional public func searchBar(searchBar: UISearchBar, textDidChange searchText: String) // called when text changes (including clear)
+
+
+@available(iOS 3.0, *)
+optional public func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool // called before text changes
+
+
+
+@available(iOS 2.0, *)
+optional public func searchBarSearchButtonClicked(searchBar: UISearchBar) // called when keyboard search button pressed
+
+
+@available(iOS 2.0, *)
+optional public func searchBarBookmarkButtonClicked(searchBar: UISearchBar) // called when bookmark button pressed
+
+
+@available(iOS 2.0, *)
+optional public func searchBarCancelButtonClicked(searchBar: UISearchBar) // called when cancel button pressed
+
+
+@available(iOS 3.2, *)
+optional public func searchBarResultsListButtonClicked(searchBar: UISearchBar) // called when search results button pressed
+
+
+
+@available(iOS 3.0, *)
+optional public func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int)
+}

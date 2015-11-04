@@ -56,22 +56,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //Implemented for UISearchBarDelegate***************************************
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchActive = true
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchActive = false
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchActive = false
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchActive = false
-    }
-    
     /*Implement this function for entering search text in the search bar
       This search is not based on the full name list, as we have added scope
       bar. Each text search is based on dwarves' name categories which are
@@ -117,6 +101,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         filteredDwarves = categorizedDwarves
         searchActive = true
         self.tableView.reloadData()
+    }
+    
+    // called when cancel button pressed
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        filteredDwarves = categorizedDwarves
+        searchActive = true
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false
     }
 
     //Implemented for UISearchBarDelegate***************************************
